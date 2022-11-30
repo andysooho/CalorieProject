@@ -26,6 +26,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".InputFood" android:label="inputfood" />
+        <activity android:name=".MealList" android:label="meal_list" />
     </application>
 
 </manifest>

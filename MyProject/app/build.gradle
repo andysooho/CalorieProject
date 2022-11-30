@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myproject"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -36,9 +36,11 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
     def room_version = "2.4.2"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation 'com.google.android.material:material:1.6.0'
 
 
 }

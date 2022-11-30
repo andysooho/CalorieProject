@@ -12,6 +12,9 @@ public class Item {
     @ColumnInfo(name = "foodname")
     public String foodname;
 
+    @ColumnInfo(name = "foodcount")
+    public String foodcount;
+
     @ColumnInfo(name = "calorie")
     public String calorie;
 

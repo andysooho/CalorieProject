@@ -23,7 +23,7 @@
             android:layout_marginBottom="36dp" />
 
         <Button
-            android:id="@+id/restaurnat"
+            android:id="@+id/btn_inputfood"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/sky"
@@ -37,7 +37,7 @@
             android:text="식사 입력" />
 
         <Button
-            android:id="@+id/list"
+            android:id="@+id/btn_meallist"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/white"

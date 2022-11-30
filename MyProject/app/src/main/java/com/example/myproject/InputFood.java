@@ -1,30 +1,59 @@
 package com.example.myproject;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 public class InputFood extends AppCompatActivity {
-    private Cursor cursor;
     ImageView imageView;
-    Button btn_close;
+    Button btn_close, btn_save;
+    EditText foodname, foodcount, calorie, date, time, foodeval;
+    TimePicker timePicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inputfood);
+        setContentView(R.layout.input_food);
+
         imageView = findViewById(R.id.imageView);
         btn_close = findViewById(R.id.btn_close);
+        btn_save = findViewById(R.id.btn_save);
+        foodname = findViewById(R.id.foodName);
+        foodcount = findViewById(R.id.foodCount);
+        calorie = findViewById(R.id.calorie);
+        foodeval = findViewById(R.id.foodEval);
+        timePicker = findViewById(R.id.timePicker);
+
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String foodname1 = foodname.getText().toString();
+                String foodcount1 = foodcount.getText().toString();
+                String calorie1 = calorie.getText().toString();
+                String foodeval1 = foodeval.getText().toString();
+                String time1 = timePicker.getHour() + ":" + timePicker.getMinute();
+
+                if (foodname1.equals("") || foodcount1.equals("") || calorie1.equals("") || foodeval1.equals("")) {
+                    Toast.makeText(InputFood.this, "모든 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    insertItem(foodname1, foodcount1, calorie1, foodeval1, time1);
+                }
+            }
+        });
 
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,9 +61,23 @@ public class InputFood extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
+    public void insertItem(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
+        Item item = new Item();
+        item.foodname = foodname1;
+        item.foodcount = foodcount1;
+        item.calorie = calorie1;
+        item.foodeval = foodeval1;
+        item.time = time1;
+
+        AppDatabase db = AppDatabase.getDBInstance(this.getApplicationContext());
+        db.itemDao().insertitem(item);
+
+        setResult(Activity.RESULT_OK);
+
+        finish();
+    }
 
 
 
