@@ -15,6 +15,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class MainActivity extends AppCompatActivity {
+    Button inputFood, btn_meallist;
+
     @TargetApi(Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         String currentDateandTime = sdf.format(new Date());
         textView.setText(currentDateandTime);
 
-        Button inputFood = findViewById(R.id.restaurnat);
+        inputFood = findViewById(R.id.btn_inputfood);
+        btn_meallist = findViewById(R.id.btn_meallist);
 
         inputFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_meallist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(MainActivity.this, MealList.class);
+                startActivity(intent2);
+            }
+        });
+
     }
 }
