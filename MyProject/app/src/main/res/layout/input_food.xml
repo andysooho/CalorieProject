@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -107,6 +108,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/foodCount"
         app:layout_constraintStart_toStartOf="@+id/foodCount" />
+
+    <Button
+        android:id="@+id/google_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="지도"
+        />
 
     <EditText
         android:id="@+id/calorie"

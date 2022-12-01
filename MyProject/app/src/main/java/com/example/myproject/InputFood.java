@@ -1,9 +1,12 @@
 package com.example.myproject;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +17,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 public class InputFood extends AppCompatActivity {
     ImageView imageView;
-    Button btn_close, btn_save;
+    Button btn_close, btn_save, google_map;
     EditText foodname, foodcount, calorie, date, time, foodeval;
     TimePicker timePicker;
 
@@ -34,7 +42,7 @@ public class InputFood extends AppCompatActivity {
         calorie = findViewById(R.id.calorie);
         foodeval = findViewById(R.id.foodEval);
         timePicker = findViewById(R.id.timePicker);
-
+        google_map = findViewById(R.id.google_map);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
 
@@ -61,8 +69,16 @@ public class InputFood extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
+
+        google_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InputFood.this, Googlemap.class);
+                startActivity(intent);
+            }
+        });
+    }
     public void insertItem(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
         Item item = new Item();
         item.foodname = foodname1;
@@ -101,5 +117,7 @@ public class InputFood extends AppCompatActivity {
             }
         }
     }
+
+
 }
 
