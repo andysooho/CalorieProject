@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class MainActivity extends AppCompatActivity {
-    Button inputFood, btn_meallist;
+    Button inputFood,btn_meallist;;
 
     @TargetApi(Build.VERSION_CODES.O)
     @Override
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
 
     }
 
