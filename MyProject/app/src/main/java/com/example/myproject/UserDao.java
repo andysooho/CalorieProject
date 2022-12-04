@@ -9,17 +9,17 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface ItemDao {
-    @Query("SELECT * FROM item")
-    List<Item> getAllitem();
+public interface UserDao {
+    @Query("SELECT * FROM user")
+    List<User> getAllUser();
 
     @Insert
-    void insertitem(Item item);
+    void insertUser(User user);
 
     @Delete
-    void deleteitem(Item item);
+    void deleteUser(User user);
 
     @Update
-    void updateitem(Item item);
+    void updateUser(User user);
 
 }

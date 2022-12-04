@@ -58,7 +58,7 @@ public class InputFood extends AppCompatActivity {
                 if (foodname1.equals("") || foodcount1.equals("") || calorie1.equals("") || foodeval1.equals("")) {
                     Toast.makeText(InputFood.this, "모든 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                    insertItem(foodname1, foodcount1, calorie1, foodeval1, time1);
+                    insertUser(foodname1, foodcount1, calorie1, foodeval1, time1);
                 }
             }
         });
@@ -79,16 +79,16 @@ public class InputFood extends AppCompatActivity {
             }
         });
     }
-    public void insertItem(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
-        Item item = new Item();
-        item.foodname = foodname1;
-        item.foodcount = foodcount1;
-        item.calorie = calorie1;
-        item.foodeval = foodeval1;
-        item.time = time1;
+    public void insertUser(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
+        User user = new User();
+        user.foodname = foodname1;
+        user.foodcount = foodcount1;
+        user.calorie = calorie1;
+        user.foodeval = foodeval1;
+        user.time = time1;
 
         AppDatabase db = AppDatabase.getDBInstance(this.getApplicationContext());
-        db.itemDao().insertitem(item);
+        db.userDao().insertUser(user);
 
         setResult(Activity.RESULT_OK);
 
