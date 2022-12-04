@@ -60,19 +60,17 @@ public class InputFood extends AppCompatActivity {
                 } else {
                     insertItem(foodname1, foodcount1, calorie1, foodeval1, time1);
                 }
-
-                Button imageButton = (Button) findViewById(R.id.map);
-                imageButton.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                        startActivity(intent);
-                    }
-                });
-
             }
         });
+
+        google_map.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(InputFood.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +97,6 @@ public class InputFood extends AppCompatActivity {
 
         finish();
     }
-
-
 
     public void getImageFromGalary(View v){
         Intent intent = new Intent(Intent.ACTION_PICK);
