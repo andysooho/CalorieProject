@@ -111,10 +111,12 @@
 
     <Button
         android:id="@+id/google_map"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="지도"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/foodCount"
+        app:layout_constraintStart_toStartOf="@+id/foodCount" />
 
     <EditText
         android:id="@+id/calorie"

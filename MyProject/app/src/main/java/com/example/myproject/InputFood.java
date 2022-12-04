@@ -60,6 +60,17 @@ public class InputFood extends AppCompatActivity {
                 } else {
                     insertItem(foodname1, foodcount1, calorie1, foodeval1, time1);
                 }
+
+                Button imageButton = (Button) findViewById(R.id.map);
+                imageButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
             }
         });
 
@@ -71,13 +82,7 @@ public class InputFood extends AppCompatActivity {
         });
 
 
-        google_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(InputFood.this, Googlemap.class);
-                startActivity(intent);
-            }
-        });
+
     }
     public void insertItem(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
         Item item = new Item();
@@ -117,6 +122,7 @@ public class InputFood extends AppCompatActivity {
             }
         }
     }
+
 
 
 }

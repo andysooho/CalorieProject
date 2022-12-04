@@ -24,10 +24,11 @@
             <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyD1Z0TSj5nIH8PE5aakku4mLOWo2Hiv4l8">
-                </meta-data>
+            </meta-data>
         </activity>
         <activity android:name=".InputFood" android:label="inputfood" />
         <activity android:name=".MealList" android:label="meal_list" />
+        <activity android:name=".MapsActivity" android:label="activity_maps" />
     </application>
 
 </manifest>
