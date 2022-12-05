@@ -66,7 +66,7 @@ public class InputFood extends AppCompatActivity {
         google_map.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(InputFood.this, MapsActivity.class);
+                Intent intent = new Intent(InputFood.this, MapsActivity2.class);
                 startActivity(intent);
             }
         });
