@@ -1,14 +1,17 @@
 package com.example.myproject;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.location.Location;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
@@ -22,11 +25,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Calendar;
+
 public class InputFood extends AppCompatActivity {
     ImageView imageView;
-    Button btn_close, btn_save, google_map;
+    Button btn_close, btn_save, google_map, btn_date;
     EditText foodname, foodcount, calorie, date, time, foodeval;
     TimePicker timePicker;
+    DatePickerDialog datePickerDialog;
 
 
     @Override
@@ -78,7 +84,34 @@ public class InputFood extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn_date = findViewById(R.id.btn_date);
+        btn_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //현재 날짜를 가져온다.
+                Calendar calendar = Calendar.getInstance();
+                int pyear = calendar.get(Calendar.YEAR);
+                int pmonth = calendar.get(Calendar.MONTH);
+                int pday = calendar.get(Calendar.DAY_OF_MONTH);
+
+                datePickerDialog = new DatePickerDialog(InputFood.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                month = month + 1;
+                                String date = year + "년 " + month + "월 " + day + "일";
+
+                                //set btn_date text to date
+                                btn_date.setText(date);
+                            }
+                        }, pyear, pmonth, pday);
+                datePickerDialog.show();
+            }//onClick
+        });
+
     }
+
     public void insertUser(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
         User user = new User();
         user.foodname = foodname1;
@@ -96,8 +129,7 @@ public class InputFood extends AppCompatActivity {
     }
 
 
-
-    public void getImageFromGalary(View v){
+    public void getImageFromGalary(View v) {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
         intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

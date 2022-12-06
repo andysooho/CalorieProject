@@ -10,91 +10,86 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/chooseImage"
-        app:layout_constraintEnd_toStartOf="@+id/foodName"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="53dp"
+        app:layout_constraintBottom_toBottomOf="@+id/google_map"
+        app:layout_constraintEnd_toStartOf="@+id/google_map"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/foodName"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <EditText
         android:id="@+id/foodName"
         android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="54dp"
+        android:layout_height="0dp"
         android:ems="10"
+        android:hint="foodName"
         android:inputType="textPersonName"
-        android:text="foodName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/calorie"
+        app:layout_constraintEnd_toEndOf="@+id/calorie"
+        app:layout_constraintStart_toStartOf="@+id/calorie"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/foodCount"
         android:layout_width="0dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="72dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="59dp"
         android:ems="10"
+        android:hint="foodCount"
         android:inputType="numberSigned"
-        app:layout_constraintBottom_toTopOf="@+id/foodEval"
+        app:layout_constraintBottom_toTopOf="@+id/google_map"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chooseImage"
-        app:layout_constraintTop_toTopOf="@+id/calorie" />
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/foodEval"
         android:layout_width="0dp"
-        android:layout_height="114dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="243dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="243dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="3dp"
         android:ems="10"
+        android:hint="foodEval"
         android:inputType="textPersonName"
-        android:text="foodEval"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/foodName" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/foodCount"
+        app:layout_constraintStart_toStartOf="@+id/foodCount"
+        app:layout_constraintTop_toBottomOf="@+id/foodCount" />
 
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        android:layout_height="145dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="208dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodEval" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/chooseImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="18dp"
         android:onClick="getImageFromGalary"
         android:text="이미지선택"
-        app:layout_constraintBottom_toTopOf="@+id/foodEval"
-        app:layout_constraintEnd_toStartOf="@+id/foodCount"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="36dp"
         android:text="저장"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,31 +98,48 @@
         android:id="@+id/btn_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="41dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="36dp"
         android:text="닫기"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/foodCount"
-        app:layout_constraintStart_toStartOf="@+id/foodCount" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/google_map"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="222dp"
+        android:layout_marginEnd="6dp"
         android:text="지도"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/btn_date"
+        app:layout_constraintStart_toStartOf="@+id/foodEval"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/calorie"
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="48dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="37dp"
         android:ems="10"
         android:inputType="numberSigned"
-        app:layout_constraintBottom_toTopOf="@+id/chooseImage"
+        app:layout_constraintBottom_toBottomOf="@+id/foodCount"
         app:layout_constraintEnd_toEndOf="@+id/foodCount"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/foodCount"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="29dp"
+        android:text="날짜"
+        app:layout_constraintBottom_toTopOf="@+id/timePicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
