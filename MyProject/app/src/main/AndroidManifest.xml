@@ -27,7 +27,8 @@
                 </meta-data>
         </activity>
         <activity android:name=".InputFood" android:label="inputfood" />
-        <activity android:name=".MealList" android:label="meal_list" />
+        <activity android:name=".MealList" android:label="meal_list" android:launchMode="singleTask"/>
+        <activity android:name=".UpdateActivity" android:label="updateactivity" />
     </application>
 
 </manifest>
