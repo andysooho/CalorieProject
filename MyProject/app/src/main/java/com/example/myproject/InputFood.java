@@ -25,12 +25,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class InputFood extends AppCompatActivity {
     ImageView imageView;
     Button btn_close, btn_save, google_map, btn_date;
-    EditText foodname, foodcount, calorie, date, time, foodeval;
+    EditText foodname, foodcount, calorie, foodeval;
     TimePicker timePicker;
     DatePickerDialog datePickerDialog;
 
@@ -60,11 +63,27 @@ public class InputFood extends AppCompatActivity {
                 String calorie1 = calorie.getText().toString();
                 String foodeval1 = foodeval.getText().toString();
                 String time1 = timePicker.getHour() + ":" + timePicker.getMinute();
+                String date1 = btn_date.getText().toString();
 
-                if (foodname1.equals("") || foodcount1.equals("") || calorie1.equals("") || foodeval1.equals("")) {
-                    Toast.makeText(InputFood.this, "모든 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
+
+
+                //make date1 format 2022년 12월 8일 to yyyy-MM-dd using SimpleDateFormat
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+                Date date = null;
+                try {
+                    date = inputFormat.parse(date1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String outputDate = outputFormat.format(date);
+
+
+                if (foodname1.equals("") || calorie1.equals("")) {
+                    Toast.makeText(InputFood.this, "필수 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    //Hint 도 글자로 인식하는듯
                 } else {
-                    insertUser(foodname1, foodcount1, calorie1, foodeval1, time1);
+                    insertUser(foodname1, foodcount1, calorie1, foodeval1, time1, outputDate);
                 }
             }
         });
@@ -75,7 +94,6 @@ public class InputFood extends AppCompatActivity {
                 finish();
             }
         });
-
 
         google_map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,15 +128,23 @@ public class InputFood extends AppCompatActivity {
             }//onClick
         });
 
+        // Get the current date and time using the Calendar class
+        Calendar calendar = Calendar.getInstance();
+        // Create a SimpleDateFormat object for formatting the date and time
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+        // Format the date and time into a string
+        String date1 = dateFormat.format(calendar.getTime());
+        btn_date.setText(date1);
     }
 
-    public void insertUser(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1) {
+    public void insertUser(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1, String date1) {
         User user = new User();
         user.foodname = foodname1;
         user.foodcount = foodcount1;
         user.calorie = calorie1;
         user.foodeval = foodeval1;
         user.time = time1;
+        user.date = date1;
 
         AppDatabase db = AppDatabase.getDBInstance(this.getApplicationContext());
         db.userDao().insertUser(user);
