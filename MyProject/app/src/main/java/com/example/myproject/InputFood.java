@@ -1,6 +1,5 @@
 package com.example.myproject;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -53,10 +52,9 @@ public class InputFood extends AppCompatActivity {
         foodeval = findViewById(R.id.foodEval);
         timePicker = findViewById(R.id.timePicker);
         google_map = findViewById(R.id.google_map);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
+        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
+        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
 
-        //timePicker.setMinuteInterval(10);
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +98,7 @@ public class InputFood extends AppCompatActivity {
         google_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InputFood.this, Googlemap.class);
+                Intent intent = new Intent(InputFood.this, MapsActivity2.class);
                 startActivity(intent);
             }
         });

@@ -4,13 +4,14 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
+import com.example.myproject.databinding.ActivityMaps2Binding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.myproject.databinding.ActivityMaps2Binding;
+
 
 public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallback {
 
@@ -43,9 +44,18 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng shop = new LatLng(37.55827, 126.998425);
+        // 마커에 대한 옵션 설정
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(shop);
+        markerOptions.title("음식점");
+        markerOptions.snippet("지금 있는 곳");
+        mMap.addMarker(markerOptions);
+        // 줌 기능 활성화
+        mMap.getUiSettings().setZoomGesturesEnabled(true);
+        // 현재 위치로 이동
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(shop));
+        // 줌 레벨 설정
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
     }
 }
