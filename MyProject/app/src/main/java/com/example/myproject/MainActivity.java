@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +26,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     Button inputFood,btn_meallist;
@@ -69,7 +76,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //음식 DB
+        AppDatabase FoodDataBase = AppDatabase.getDBInstance(this);
+
+        AssetManager assetManager = getResources().getAssets();
+        InputStream inputStream = null;
+        try {
+            inputStream = assetManager.open("FoodDB.txt");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            FoodDB foodinput = new FoodDB();
+            while ((line = reader.readLine()) != null) {
+                //Log.d("FoodDB", line);
+                String[] token = line.split("\t");
+
+                foodinput.foodNo = token[0];
+                foodinput.foodname = token[1];
+                foodinput.calorie = token[2];
+                //Log.d("file_test", Arrays.toString(tokens));
+                FoodDataBase.foodDBDao().insertFood(foodinput);
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-
 }

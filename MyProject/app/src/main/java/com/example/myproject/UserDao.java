@@ -10,8 +10,12 @@ import java.util.List;
 
 @Dao
 public interface UserDao {
+
     @Query("SELECT * FROM user")
     List<User> getAllUser();
+
+    @Query("SELECT * FROM user WHERE date = :date")
+    List<User> getUserByDate(String date);
 
     @Insert
     void insertUser(User user);

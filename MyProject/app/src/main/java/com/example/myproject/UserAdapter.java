@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
@@ -36,18 +38,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
         holder.foodname.setText(userList.get(position).foodname);
         holder.calorie.setText(userList.get(position).calorie);
-        //holder.carbohydrate.setText(item.carbohydrate);
-        //holder.protein.setText(item.protein);
+        holder.date.setText(userList.get(position).date);
 
 
         //수정화면으로 이동
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
                 Intent intent = new Intent(context, UpdateActivity.class);
                 intent.putExtra("uId",userList.get(mPosition).uid);
-                intent.putExtra("userName",userList.get(mPosition).foodname);
-                intent.putExtra("userCalorie",userList.get(mPosition).calorie);
+                intent.putExtra("upName",userList.get(mPosition).foodname);
+                intent.putExtra("upCalorie",userList.get(mPosition).calorie);
+                intent.putExtra("upDate",userList.get(mPosition).date);
+                //intent.putExtra("upImage", byteArray);
                 context.startActivity(intent);
             }
         });
@@ -63,10 +67,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         return userList.size();
     }
 
+    /*
     //리스트저장
     public void setItemList(List<User> userList) {
         this.userList = userList;
     }
+
+     */
 
     //사용자삭제
     public void deleteUser(int position) {
@@ -74,15 +81,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView foodname, calorie, carbohydrate, protein, fat;
+        TextView foodname, calorie, date;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             foodname = itemView.findViewById(R.id.item_foodname);
             calorie = itemView.findViewById(R.id.item_calorie);
-            //carbohydrate = itemView.findViewById(R.id.carbohydrate);
-            //protein = itemView.findViewById(R.id.protein);
-            //fat = itemView.findViewById(R.id.fat);
+            date = itemView.findViewById(R.id.item_date);
         }
     }
 

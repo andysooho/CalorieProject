@@ -46,12 +46,9 @@
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyD1Z0TSj5nIH8PE5aakku4mLOWo2Hiv4l8"></meta-data>
         </activity>
-        <activity
-            android:name=".InputFood"
-            android:label="inputfood" />
-        <activity
-            android:name=".MealList"
-            android:label="meal_list" />
+        <activity android:name=".InputFood" android:label="inputfood" />
+        <activity android:name=".MealList" android:label="meal_list" />
+        <activity android:name=".UpdateActivity" />
     </application>
 
 </manifest>
