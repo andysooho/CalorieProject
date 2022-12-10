@@ -1,8 +1,14 @@
 package com.example.myproject;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+
+import java.io.ByteArrayOutputStream;
 
 @Entity
 public class User {
@@ -24,14 +30,6 @@ public class User {
     @ColumnInfo(name = "time")
     public String time;
 
-    @ColumnInfo(name = "image")
-    public String image;
-
     @ColumnInfo(name = "foodeval")
     public String foodeval;
-
-
-
-
-
 }

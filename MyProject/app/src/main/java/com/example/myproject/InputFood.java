@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -100,7 +102,7 @@ public class InputFood extends AppCompatActivity {
         google_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InputFood.this, Googlemap.class);
+                Intent intent = new Intent(InputFood.this, MapsActivity2.class);
                 startActivity(intent);
             }
         });
@@ -177,7 +179,5 @@ public class InputFood extends AppCompatActivity {
             }
         }
     }
-
-
 }
 
