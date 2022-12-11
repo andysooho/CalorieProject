@@ -173,8 +173,8 @@ public class InputFood extends AppCompatActivity {
                     imageView.setImageURI(data.getData());
                     uri = data.getData();
                     //make imageview2 invisible
-                    ImageView imageView2 = findViewById(R.id.imageView2);
-                    imageView2.setVisibility(View.INVISIBLE);
+                    //ImageView imageView2 = findViewById(R.id.imageView2);
+                    //imageView2.setVisibility(View.INVISIBLE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
