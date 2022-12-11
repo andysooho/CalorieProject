@@ -9,9 +9,10 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverter;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
 @Entity
-public class User {
+public class User { // implements Serializable
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
@@ -32,4 +33,7 @@ public class User {
 
     @ColumnInfo(name = "foodeval")
     public String foodeval;
+
+    @ColumnInfo(name = "imageUri")
+    public String imageUri;
 }

@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -38,6 +39,8 @@ public class InputFood extends AppCompatActivity {
     EditText foodname, foodcount, calorie, foodeval;
     TimePicker timePicker;
     DatePickerDialog datePickerDialog;
+
+    Uri uri;
 
 
     @Override
@@ -147,6 +150,9 @@ public class InputFood extends AppCompatActivity {
         user.foodeval = foodeval1;
         user.time = time1;
         user.date = date1;
+        if (uri != null) {
+            user.imageUri = uri.toString();
+        }
 
         AppDatabase db = AppDatabase.getDBInstance(this.getApplicationContext());
         db.userDao().insertUser(user);
@@ -171,6 +177,7 @@ public class InputFood extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 try {
                     imageView.setImageURI(data.getData());
+                    uri = data.getData();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
