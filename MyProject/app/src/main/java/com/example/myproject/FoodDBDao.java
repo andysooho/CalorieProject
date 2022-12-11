@@ -14,8 +14,13 @@ public interface FoodDBDao {
     @Query("SELECT * FROM fooddb")
     List<FoodDB> getAllFood();
 
+    @Query("SELECT * FROM fooddb WHERE foodname LIKE :search")
+    List<FoodDB> searchFoodByName(String search);
+
     @Insert
     void insertFood(FoodDB foodDB);
+
+
 
     @Delete
     void deleteUser(FoodDB foodDB);

@@ -15,7 +15,7 @@
         android:layout_marginEnd="2dp"
         android:background="#FBF2EF"
         android:src="@drawable/photo"
-        app:layout_constraintEnd_toStartOf="@+id/listview"
+        app:layout_constraintEnd_toStartOf="@+id/listView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,10 +155,10 @@
         android:layout_marginEnd="16dp"
         android:text="검색"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listview" />
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
