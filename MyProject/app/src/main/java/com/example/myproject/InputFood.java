@@ -70,8 +70,6 @@ public class InputFood extends AppCompatActivity {
                 String time1 = timePicker.getHour() + ":" + timePicker.getMinute();
                 String date1 = btn_date.getText().toString();
 
-
-
                 //make date1 format 2022년 12월 8일 to yyyy-MM-dd using SimpleDateFormat
                 SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
                 Date date = null;
@@ -82,7 +80,6 @@ public class InputFood extends AppCompatActivity {
                 }
                 SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String outputDate = outputFormat.format(date);
-
 
                 if (foodname1.equals("") || calorie1.equals("")) {
                     Toast.makeText(InputFood.this, "필수 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
@@ -133,11 +130,8 @@ public class InputFood extends AppCompatActivity {
             }//onClick
         });
 
-        // Get the current date and time using the Calendar class
         Calendar calendar = Calendar.getInstance();
-        // Create a SimpleDateFormat object for formatting the date and time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
-        // Format the date and time into a string
         String date1 = dateFormat.format(calendar.getTime());
         btn_date.setText(date1);
     }
@@ -178,6 +172,9 @@ public class InputFood extends AppCompatActivity {
                 try {
                     imageView.setImageURI(data.getData());
                     uri = data.getData();
+                    //make imageview2 invisible
+                    ImageView imageView2 = findViewById(R.id.imageView2);
+                    imageView2.setVisibility(View.INVISIBLE);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

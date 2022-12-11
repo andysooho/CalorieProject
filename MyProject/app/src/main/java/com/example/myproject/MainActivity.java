@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -8,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -34,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 public class MainActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE = 1;
     Button inputFood,btn_meallist;
     private ImageView Gif;
 
@@ -75,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
+        // Request READ_EXTERNAL_STORAGE permission
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
 
         //음식 DB
         AppDatabase FoodDataBase = AppDatabase.getDBInstance(this);

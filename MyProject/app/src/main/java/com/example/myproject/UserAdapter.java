@@ -51,7 +51,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                 intent.putExtra("upName",userList.get(mPosition).foodname);
                 intent.putExtra("upCalorie",userList.get(mPosition).calorie);
                 intent.putExtra("upDate",userList.get(mPosition).date);
-                //intent.putExtra("upImage", byteArray);
+                //imageUri넘기기
+                if(userList.get(mPosition).imageUri != null){
+                    intent.putExtra("upImageUri",userList.get(mPosition).imageUri);
+                }
+                //intent.putExtra("upImageUri",userList.get(mPosition).imageUri);
                 context.startActivity(intent);
             }
         });
