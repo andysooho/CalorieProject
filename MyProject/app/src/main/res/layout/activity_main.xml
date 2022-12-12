@@ -75,7 +75,7 @@
             android:text="식사 보여주기" />
 
         <Button
-            android:id="@+id/analysis"
+            android:id="@+id/btn_analysis"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:backgroundTint="@color/pup"

@@ -37,7 +37,7 @@ import java.util.Arrays;
 import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
-    Button inputFood,btn_meallist;
+    Button btn_inputfood,btn_meallist,btn_analysis;
     private ImageView Gif;
 
     @TargetApi(Build.VERSION_CODES.O)
@@ -59,10 +59,11 @@ public class MainActivity extends AppCompatActivity {
         ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#8258FA")), 3, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tv.setText(ssb);
 
-        inputFood = findViewById(R.id.btn_inputfood);
+        btn_inputfood = findViewById(R.id.btn_inputfood);
         btn_meallist = findViewById(R.id.btn_meallist);
+        btn_analysis = findViewById(R.id.btn_analysis);
 
-        inputFood.setOnClickListener(new View.OnClickListener() {
+        btn_inputfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, InputFood.class);
@@ -78,6 +79,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
+        btn_analysis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(MainActivity.this, AnalysisFood.class);
+                startActivity(intent3);
+            }
+        });
+
+
 
         // Request READ_EXTERNAL_STORAGE permission
         ActivityCompat.requestPermissions(this,

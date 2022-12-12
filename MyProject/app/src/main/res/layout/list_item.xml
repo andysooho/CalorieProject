@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/item_calorie"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textSize="20sp"
@@ -31,6 +31,14 @@
         <TextView
             android:id="@+id/item_date"
             android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/item_when"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textSize="20sp"

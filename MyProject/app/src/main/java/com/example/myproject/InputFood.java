@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -48,6 +49,10 @@ public class InputFood extends AppCompatActivity {
 
     Uri uri;
     ListView listView;
+    String foodwhen = "점심";
+
+    InputMethodManager imm;
+
 
 
     @Override
@@ -66,6 +71,7 @@ public class InputFood extends AppCompatActivity {
         google_map = findViewById(R.id.google_map);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
+        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,12 +94,14 @@ public class InputFood extends AppCompatActivity {
                 SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String outputDate = outputFormat.format(date);
 
-                if (foodname1.equals("") || calorie1.equals("")) {
+                if (foodname1.equals("")) {
                     Toast.makeText(InputFood.this, "필수 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     //Hint 도 글자로 인식하는듯
                 } else {
                     insertUser(foodname1, foodcount1, calorie1, foodeval1, time1, outputDate);
                 }
+
+
             }
         });
 
@@ -150,7 +158,10 @@ public class InputFood extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String searchfood = "%" + foodname.getText().toString() + "%" ;
+                //키보드 자동으로 닫기
+                imm.hideSoftInputFromWindow(foodname.getWindowToken(), 0);
+
+                String searchfood = "%" + foodname.getText().toString() + "%";
                 //처음에는 List<FoodDB> 로 간단하게 했지만 리스트뷰 중복출력문제가 있어서 수정
                 //List<FoodDB> foodList = foodDB.foodDBDao().searchFoodByName(searchfood);
                 Set<FoodDB> foodset = new HashSet<>();
@@ -176,6 +187,28 @@ public class InputFood extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    //라디오처리
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()) {
+            case R.id.breakfast:
+                if (checked)
+                    foodwhen = "아침";
+                break;
+            case R.id.lunch:
+                if (checked)
+                    foodwhen = "점심";
+                break;
+            case R.id.dinner:
+                if (checked)
+                    foodwhen = "저녁";
+                break;
+        }
     }
 
     public class FoodListAdapter extends ArrayAdapter<FoodDB> {
@@ -220,6 +253,7 @@ public class InputFood extends AppCompatActivity {
         if (uri != null) {
             user.imageUri = uri.toString();
         }
+        user.foodwhen = foodwhen;
 
         AppDatabase db = AppDatabase.getDBInstance(this.getApplicationContext());
         db.userDao().insertUser(user);

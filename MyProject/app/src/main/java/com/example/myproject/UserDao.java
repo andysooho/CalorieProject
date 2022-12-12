@@ -17,6 +17,16 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE date = :date")
     List<User> getUserByDate(String date);
 
+    @Query("SELECT SUM(calorie) FROM user WHERE foodwhen = '아침' AND date = :date")
+    int getTotalCaloriesForBreakfastOnDate(String date);
+
+    @Query("SELECT SUM(calorie) FROM user WHERE foodwhen = '점심' AND date = :date")
+    int getTotalCaloriesForLunchOnDate(String date);
+
+    @Query("SELECT SUM(calorie) FROM user WHERE foodwhen = '저녁' AND date = :date")
+    int getTotalCaloriesForDinnerOnDate(String date);
+
+
     @Insert
     void insertUser(User user);
 

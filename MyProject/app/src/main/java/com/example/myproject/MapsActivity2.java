@@ -83,6 +83,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -103,17 +105,33 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
+import noman.googleplaces.NRPlaces;
+import noman.googleplaces.Place;
+import noman.googleplaces.PlaceType;
+import noman.googleplaces.PlacesException;
+import noman.googleplaces.PlacesListener;
+
+
 
 public class MapsActivity2 extends AppCompatActivity
-        implements OnMapReadyCallback,
-        ActivityCompat.OnRequestPermissionsResultCallback{
+        implements
+        OnMapReadyCallback,
+        ActivityCompat.OnRequestPermissionsResultCallback,
+        PlacesListener {
 
 
     private GoogleMap mMap;
     private Marker currentMarker = null;
+
+    List<Marker> previous_marker = null;
+
+
+
 
     private static final String TAG = "googlemap_example";
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
@@ -127,7 +145,7 @@ public class MapsActivity2 extends AppCompatActivity
 
 
     // 앱을 실행하기 위해 필요한 퍼미션을 정의합니다.
-    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};  // 외부 저장소
+    String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};  // 외부 저장소
 
 
     Location mCurrentLocatiion;
@@ -171,6 +189,33 @@ public class MapsActivity2 extends AppCompatActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        previous_marker = new ArrayList<Marker>();
+
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPlaceInformation(currentPosition);
+
+                //내가 수정
+                /*
+                List<Marker> previousMarker = new ArrayList<Marker>();
+                for(Marker marker : previousMarker){
+                    String title = marker.getTitle();
+
+                    //modify infutfood.java 's editText
+                    EditText editText = (EditText) findViewById(R.id.location);
+                    editText.setText(title);
+
+                }
+
+                 */
+
+            }
+        });
+
+
     }
 
     @Override
@@ -184,7 +229,6 @@ public class MapsActivity2 extends AppCompatActivity
         setDefaultLocation();
 
 
-
         //런타임 퍼미션 처리
         // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
         int hasFineLocationPermission = ContextCompat.checkSelfPermission(this,
@@ -193,9 +237,8 @@ public class MapsActivity2 extends AppCompatActivity
                 Manifest.permission.ACCESS_COARSE_LOCATION);
 
 
-
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
-                hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED   ) {
+                hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
 
             // 2. 이미 퍼미션을 가지고 있다면
             // ( 안드로이드 6.0 이하 버전은 런타임 퍼미션이 필요없기 때문에 이미 허용된 걸로 인식합니다.)
@@ -204,7 +247,7 @@ public class MapsActivity2 extends AppCompatActivity
             startLocationUpdates(); // 3. 위치 업데이트 시작
 
 
-        }else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
+        } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
 
             // 3-1. 사용자가 퍼미션 거부를 한 적이 있는 경우에는
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSIONS[0])) {
@@ -217,7 +260,7 @@ public class MapsActivity2 extends AppCompatActivity
                     public void onClick(View view) {
 
                         // 3-3. 사용자게에 퍼미션 요청을 합니다. 요청 결과는 onRequestPermissionResult에서 수신됩니다.
-                        ActivityCompat.requestPermissions( MapsActivity2.this, REQUIRED_PERMISSIONS,
+                        ActivityCompat.requestPermissions(MapsActivity2.this, REQUIRED_PERMISSIONS,
                                 PERMISSIONS_REQUEST_CODE);
                     }
                 }).show();
@@ -226,12 +269,11 @@ public class MapsActivity2 extends AppCompatActivity
             } else {
                 // 4-1. 사용자가 퍼미션 거부를 한 적이 없는 경우에는 퍼미션 요청을 바로 합니다.
                 // 요청 결과는 onRequestPermissionResult에서 수신됩니다.
-                ActivityCompat.requestPermissions( this, REQUIRED_PERMISSIONS,
+                ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS,
                         PERMISSIONS_REQUEST_CODE);
             }
 
         }
-
 
 
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -242,9 +284,25 @@ public class MapsActivity2 extends AppCompatActivity
             @Override
             public void onMapClick(LatLng latLng) {
 
-                Log.d( TAG, "onMapClick :");
+                Log.d(TAG, "onMapClick :");
             }
         });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String title = marker.getTitle();
+
+                //modify infutfood.java 's editText
+                EditText editText = (EditText) findViewById(R.id.location);
+                editText.setText(title);
+
+                return false;
+            }
+        });
+
+
+
     }
 
     LocationCallback locationCallback = new LocationCallback() {
@@ -281,14 +339,13 @@ public class MapsActivity2 extends AppCompatActivity
     };
 
 
-
     private void startLocationUpdates() {
 
         if (!checkLocationServicesStatus()) {
 
             Log.d(TAG, "startLocationUpdates : call showDialogForLocationServiceSetting");
             showDialogForLocationServiceSetting();
-        }else {
+        } else {
 
             int hasFineLocationPermission = ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION);
@@ -296,9 +353,8 @@ public class MapsActivity2 extends AppCompatActivity
                     Manifest.permission.ACCESS_COARSE_LOCATION);
 
 
-
             if (hasFineLocationPermission != PackageManager.PERMISSION_GRANTED ||
-                    hasCoarseLocationPermission != PackageManager.PERMISSION_GRANTED   ) {
+                    hasCoarseLocationPermission != PackageManager.PERMISSION_GRANTED) {
 
                 Log.d(TAG, "startLocationUpdates : 퍼미션 안가지고 있음");
                 return;
@@ -328,7 +384,7 @@ public class MapsActivity2 extends AppCompatActivity
             Log.d(TAG, "onStart : call mFusedLocationClient.requestLocationUpdates");
             mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
 
-            if (mMap!=null)
+            if (mMap != null)
                 mMap.setMyLocationEnabled(true);
 
         }
@@ -348,8 +404,6 @@ public class MapsActivity2 extends AppCompatActivity
             mFusedLocationClient.removeLocationUpdates(locationCallback);
         }
     }
-
-
 
 
     public String getCurrentAddress(LatLng latlng) {
@@ -453,16 +507,14 @@ public class MapsActivity2 extends AppCompatActivity
                 Manifest.permission.ACCESS_COARSE_LOCATION);
 
 
-
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
-                hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED   ) {
+                hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
 
         return false;
 
     }
-
 
 
     /*
@@ -584,6 +636,71 @@ public class MapsActivity2 extends AppCompatActivity
         }
     }
 
+    @Override
+    public void onPlacesFailure(PlacesException e) {
+
+    }
+
+    @Override
+    public void onPlacesStart() {
+
+    }
+
+    @Override
+    public void onPlacesSuccess(final List<Place> places) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (noman.googleplaces.Place place : places) {
+
+                    LatLng latLng
+                            = new LatLng(place.getLatitude()
+                            , place.getLongitude());
+
+                    String markerSnippet = getCurrentAddress(latLng);
+
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title(place.getName());
+                    markerOptions.snippet(markerSnippet);
+                    Marker item = mMap.addMarker(markerOptions);
+                    previous_marker.add(item);
+
+                }
+
+                //중복 마커 제거
+                HashSet<Marker> hashSet = new HashSet<Marker>();
+                hashSet.addAll(previous_marker);
+                previous_marker.clear();
+                previous_marker.addAll(hashSet);
+
+            }
+        });
+
+
+    }
+
+    @Override
+    public void onPlacesFinished() {
+
+    }
+
+    public void showPlaceInformation(LatLng location)
+    {
+        mMap.clear();//지도 클리어
+
+        if (previous_marker != null)
+            previous_marker.clear();//지역정보 마커 클리어
+
+        new NRPlaces.Builder()
+                .listener(MapsActivity2.this)
+                .key("AIzaSyAQlJ9SP2aLy7DAvclRzk62MJwFEcTbUkg")
+                .latlng(location.latitude, location.longitude)//현재 위치
+                .radius(700) //500 미터 내에서 검색
+                .type(PlaceType.RESTAURANT) //음식점
+                .build()
+                .execute();
+    }
 
 
 }

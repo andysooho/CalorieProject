@@ -39,6 +39,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         holder.foodname.setText(userList.get(position).foodname);
         holder.calorie.setText(userList.get(position).calorie);
         holder.date.setText(userList.get(position).date);
+        holder.foodwhen.setText(userList.get(position).foodwhen);
 
 
         //수정화면으로 이동
@@ -85,13 +86,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView foodname, calorie, date;
+        TextView foodname, calorie, date, foodwhen;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             foodname = itemView.findViewById(R.id.item_foodname);
             calorie = itemView.findViewById(R.id.item_calorie);
             date = itemView.findViewById(R.id.item_date);
+            foodwhen = itemView.findViewById(R.id.item_when);
         }
     }
 

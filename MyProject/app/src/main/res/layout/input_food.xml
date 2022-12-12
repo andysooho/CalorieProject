@@ -6,108 +6,198 @@
     android:layout_height="match_parent"
     android:background="@color/food">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="183dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="2dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="9dp"
         android:background="#FBF2EF"
         android:src="@drawable/photo"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
         app:layout_constraintEnd_toStartOf="@+id/listView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/chooseImage"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:backgroundTint="#F79F81"
-        android:onClick="getImageFromGalary"
-        android:text="Choose Image"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="13dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView">
+
+        <Button
+            android:id="@+id/chooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F79F81"
+            android:onClick="getImageFromGalary"
+            android:text="Choose Image" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:checkedButton="@id/lunch">
+
+            <RadioButton
+                android:id="@+id/breakfast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="아침" />
+
+            <RadioButton
+                android:id="@+id/lunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="점심" />
+
+            <RadioButton
+                android:id="@+id/dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onRadioButtonClicked"
+                android:text="저녁" />
+        </RadioGroup>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="333dp"
+        android:layout_height="179dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="43dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
 
-        <EditText
-            android:id="@+id/foodName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Food Name"
-            android:inputType="textPersonName"
-            android:textColor="@color/black" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/foodCount"
+            <EditText
+                android:id="@+id/foodName"
+                android:layout_width="227dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="이름"
+                android:inputType="textPersonName"
+                android:textColor="@color/black" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="검색" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Food Count"
-            android:inputType="numberSigned"
-            android:textColor="@color/black" />
+            android:layout_height="42dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/foodCount"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="수량"
+                android:inputType="numberSigned"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="칼로리"
+                android:inputType="numberSigned"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/foodEval"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Food Evaluation"
+            android:hint="맛 평가"
             android:inputType="textPersonName"
             android:textColor="@color/black" />
 
+
         <EditText
-            android:id="@+id/calorie"
+            android:id="@+id/location"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="43dp"
             android:ems="10"
-            android:hint="Food Calories"
-            android:inputType="numberSigned"
-            android:textColor="@color/black" />
+            android:hint="위치"
+            android:inputType="textPersonName" />
 
-
-        <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="300dp"
-            android:layout_height="160dp"
-            android:timePickerMode="spinner" />
-
-        <Button
-            android:id="@+id/btn_date"
-            android:layout_width="180dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginBottom="80dp"
-            android:backgroundTint="#F79F81"
-            android:text="날짜" />
     </LinearLayout>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="410dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="41dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_date" />
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F79F81"
+        android:text="날짜"
+        app:layout_constraintBottom_toTopOf="@+id/timePicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
-        android:layout_height="182dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
         android:gravity="bottom"
+
+
         android:orientation="horizontal"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker">
 
         <Button
             android:id="@+id/btn_save"
@@ -147,24 +237,16 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="16dp"
-        android:text="검색"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/chooseImage"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

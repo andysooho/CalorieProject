@@ -100,7 +100,7 @@ public class MealList extends AppCompatActivity {
         }).attachToRecyclerView(recyclerView); //RecyclerView에 적용
 
         //캘린더뷰
-        calendarView = findViewById(R.id.calendarView);
+        calendarView = findViewById(R.id.calendarView1);
         //캘린더뷰 날짜 선택 리스너
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -123,18 +123,6 @@ public class MealList extends AppCompatActivity {
 
 
     }
-
-    /*
-    //액티비티가 화면에 나타날 때 호출됨
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //사용자 조회
-        loadUserList();
-    }
-
-     */
-
 
     //액티비티 백그라운드에 있는데 호출되면 실행
     @Override
