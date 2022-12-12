@@ -1,15 +1,9 @@
 package com.example.myproject;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
-
-import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
 
 @Entity
 public class User { // implements Serializable

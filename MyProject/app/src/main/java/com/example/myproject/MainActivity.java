@@ -37,7 +37,7 @@ import java.util.Arrays;
 import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
-    Button btn_inputfood,btn_meallist,btn_analysis;
+    Button btn_inputfood, btn_meallist, btn_analysis;
     private ImageView Gif;
 
     @TargetApi(Build.VERSION_CODES.O)
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView=findViewById(R.id.date);
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
         String currentDateandTime = sdf.format(new Date());
         textView.setText(currentDateandTime);
@@ -88,13 +89,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         // Request READ_EXTERNAL_STORAGE permission
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
 
-        //음식 DB
+        //음식 DB 처리
         AppDatabase FoodDataBase = AppDatabase.getDBInstance(this);
 
         AssetManager assetManager = getResources().getAssets();

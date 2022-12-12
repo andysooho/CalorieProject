@@ -22,7 +22,6 @@ public class UpdateActivity extends AppCompatActivity {
     TextView upDateText;
     ImageView imageView;
 
-
     int uId;
 
     @Override
@@ -57,20 +56,14 @@ public class UpdateActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
         //변수 값으로 에디트 텍스트에 값 넣기
         upNameEdit.setText(upName);
         upCalorieEdit.setText(upCalorie);
         upDateText.setText(upDate);
-
 
         //수정 버튼
         closeBtn.setOnClickListener(v -> {
             finish();
         });
     }
-
 }

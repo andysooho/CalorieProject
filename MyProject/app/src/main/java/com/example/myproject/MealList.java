@@ -82,7 +82,6 @@ public class MealList extends AppCompatActivity {
             }
 
             //제스처 그림 구현
-
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
@@ -98,6 +97,7 @@ public class MealList extends AppCompatActivity {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         }).attachToRecyclerView(recyclerView); //RecyclerView에 적용
+
 
         //캘린더뷰
         calendarView = findViewById(R.id.calendarView1);

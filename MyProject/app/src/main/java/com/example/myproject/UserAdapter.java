@@ -37,12 +37,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         int mPosition = holder.getAdapterPosition();
 
         holder.foodname.setText(userList.get(position).foodname);
-        //make userList's calorie to String
+        //userList의 calorie를 String으로 형변환
         String calorietostring = String.valueOf(userList.get(position).calorie);
         holder.calorie.setText(calorietostring);
         holder.date.setText(userList.get(position).date);
         holder.foodwhen.setText(userList.get(position).foodwhen);
-
 
         //수정화면으로 이동
         holder.itemView.setOnClickListener(new View.OnClickListener(){
@@ -74,14 +73,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         return userList.size();
     }
 
-    /*
-    //리스트저장
-    public void setItemList(List<User> userList) {
-        this.userList = userList;
-    }
-
-     */
-
     //사용자삭제
     public void deleteUser(int position) {
         this.userList.remove(position);
@@ -98,8 +89,4 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             foodwhen = itemView.findViewById(R.id.item_when);
         }
     }
-
-
-
-
 }

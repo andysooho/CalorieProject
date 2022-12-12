@@ -20,7 +20,6 @@ public class AnalysisFood extends AppCompatActivity {
     CalendarView calendarView;
     String date;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,17 +63,12 @@ public class AnalysisFood extends AppCompatActivity {
                 int dinnercal = db.userDao().getTotalCaloriesForDinnerOnDate(date);
                 int totalcal = db.userDao().getTotalCaloriesForAllFoodOnDate(date);
 
-                //change breakfastcal to string
-
+                //텍스트박스에 정수를 설정하면 오류가난다. 반드시 어떤 형인지를 조심해서 설정해야한다.
                 breakfastCalorie.setText(Integer.toString(breakfastcal));
                 lunchCalorie.setText(Integer.toString(lunchcal));
                 dinnerCalorie.setText(Integer.toString(dinnercal));
                 totalCalorie.setText(Integer.toString(totalcal));
             }
         });
-
-
-
-
     }
 }
