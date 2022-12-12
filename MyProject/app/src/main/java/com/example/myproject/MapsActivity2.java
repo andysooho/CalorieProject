@@ -292,10 +292,9 @@ public class MapsActivity2 extends AppCompatActivity
             @Override
             public boolean onMarkerClick(Marker marker) {
                 String title = marker.getTitle();
+                String snippet = marker.getSnippet();
+                Toast.makeText(MapsActivity2.this, title + " " + snippet, Toast.LENGTH_SHORT).show();
 
-                //modify infutfood.java 's editText
-                EditText editText = (EditText) findViewById(R.id.location);
-                editText.setText(title);
 
                 return false;
             }

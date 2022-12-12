@@ -11,11 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class AnalysisFood extends AppCompatActivity {
-    TextView breakfastCalorie, lunchCalorie, dinnerCalorie, totalCalorie;
+    TextView breakfastCalorie, lunchCalorie, dinnerCalorie, totalCalorie, totalcalorie_date;
     CalendarView calendarView;
     String date;
 
@@ -26,6 +27,24 @@ public class AnalysisFood extends AppCompatActivity {
         setContentView(R.layout.analysis_food);
 
         breakfastCalorie = findViewById(R.id.breakfast_calculated);
+        lunchCalorie = findViewById(R.id.lunch_calculated);
+        dinnerCalorie = findViewById(R.id.dinner_calculated);
+        totalCalorie = findViewById(R.id.total_calculated);
+        totalcalorie_date = findViewById(R.id.totalcal);
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+        date = dateFormat.format(calendar.getTime());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date();
+        String date_fortotal = sdf.format(currentDate);
+        totalcalorie_date.setText(date+"\n총 칼로리");
+
+        AppDatabase db = AppDatabase.getDBInstance(getApplicationContext());
+        int totalcal = db.userDao().getTotalCaloriesForAllFoodOnDate(date_fortotal);
+        totalCalorie.setText(totalcal+" kcal");
+
 
         //캘린더뷰
         calendarView = findViewById(R.id.calendarView3);
@@ -39,12 +58,18 @@ public class AnalysisFood extends AppCompatActivity {
                 date = sdf.format(tmpdate);
                 Toast.makeText(AnalysisFood.this, date, Toast.LENGTH_SHORT).show();
 
-                AppDatabase db = AppDatabase.getDBInstance(getApplicationContext());
+
                 int breakfastcal = db.userDao().getTotalCaloriesForBreakfastOnDate(date);
+                int lunchcal = db.userDao().getTotalCaloriesForLunchOnDate(date);
+                int dinnercal = db.userDao().getTotalCaloriesForDinnerOnDate(date);
+                int totalcal = db.userDao().getTotalCaloriesForAllFoodOnDate(date);
 
                 //change breakfastcal to string
 
                 breakfastCalorie.setText(Integer.toString(breakfastcal));
+                lunchCalorie.setText(Integer.toString(lunchcal));
+                dinnerCalorie.setText(Integer.toString(dinnercal));
+                totalCalorie.setText(Integer.toString(totalcal));
             }
         });
 
