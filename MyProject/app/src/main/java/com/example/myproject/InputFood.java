@@ -43,7 +43,7 @@ import java.util.Set;
 public class InputFood extends AppCompatActivity {
     ImageView imageView;
     Button btn_close, btn_save, google_map, btn_date;
-    EditText foodname, foodcount, foodcalorie, foodeval;
+    EditText foodname, foodcount, foodcalorie, foodeval, location;
     TimePicker timePicker;
     DatePickerDialog datePickerDialog;
 
@@ -71,6 +71,7 @@ public class InputFood extends AppCompatActivity {
         foodeval = findViewById(R.id.foodEval);
         timePicker = findViewById(R.id.timePicker);
         google_map = findViewById(R.id.google_map);
+        location = findViewById(R.id.location);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, MODE_PRIVATE);
         ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
         imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -119,7 +120,8 @@ public class InputFood extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(InputFood.this, MapsActivity2.class);
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent, 2);
             }
         });
 
@@ -285,6 +287,16 @@ public class InputFood extends AppCompatActivity {
                     //make imageview2 invisible
                     //ImageView imageView2 = findViewById(R.id.imageView2);
                     //imageView2.setVisibility(View.INVISIBLE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if (requestCode == 2) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    location.setText(data.getStringExtra("LOCATION"));
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
