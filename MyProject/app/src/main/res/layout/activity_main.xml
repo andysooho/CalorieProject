@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#F5F5DC"
+    android:background="#FFFFFF"
 
     >
 
@@ -17,7 +17,7 @@
         <TextView
 
             android:id="@+id/titl"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -29,10 +29,13 @@
 
         <ImageView
             android:id="@+id/gif_image"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="330dp"
+            android:layout_height="330dp"
             android:layout_gravity="center_horizontal"
             />
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
 
         <TextView
             android:id="@+id/date"
@@ -64,7 +67,7 @@
             android:id="@+id/btn_meallist"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="#F6CED8"
             android:textColor="@color/black"
             android:textSize="24dp"
             android:layout_marginLeft="20dp"
