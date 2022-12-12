@@ -25,6 +25,8 @@ public class AnalysisFood extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis_food);
 
+        breakfastCalorie = findViewById(R.id.breakfast_calculated);
+
         //캘린더뷰
         calendarView = findViewById(R.id.calendarView3);
         //캘린더뷰 날짜 선택 리스너
@@ -35,22 +37,17 @@ public class AnalysisFood extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date tmpdate = sdf.parse(year + "-" + (month + 1) + "-" + dayOfMonth, new java.text.ParsePosition(0));
                 date = sdf.format(tmpdate);
-                //Toast.makeText(AnalysisFood.this, date, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AnalysisFood.this, date, Toast.LENGTH_SHORT).show();
+
+                AppDatabase db = AppDatabase.getDBInstance(getApplicationContext());
+                int breakfastcal = db.userDao().getTotalCaloriesForBreakfastOnDate(date);
+
+                //change breakfastcal to string
+
+                breakfastCalorie.setText(Integer.toString(breakfastcal));
             }
         });
 
-        //breakfastCalorie = findViewById(R.id.breakfast_calculated);
-        //AppDatabase db = AppDatabase.getDBInstance(getApplicationContext());
-        //int breakfastcal = db.userDao().getTotalCaloriesForBreakfastOnDate(date);
-
-
-        /*
-        if(breakfastcal == null){
-            breakfastCalorie.setText("0");
-        }else
-            breakfastCalorie.setText(breakfastcal);
-
-         */
 
 
 
