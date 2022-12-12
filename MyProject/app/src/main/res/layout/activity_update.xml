@@ -1,52 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateActivity">
+    tools:context=".UpdateActivity"
+    android:background="#F781D8">
 
-    <EditText
-        android:id="@+id/up_name_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="이름"
-        android:inputType="text" />
 
-    <EditText
-        android:id="@+id/up_calorie_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/up_name_edit"
-        android:hint="칼로리"
-        android:inputType="number" />
-
-    <Button
-        android:id="@+id/btn_updataclose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/up_calorie_edit"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="519dp"
-        android:text="닫기" />
-
-    <TextView
-        android:id="@+id/up_date_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="117dp"
-        android:text="TextView" />
 
     <ImageView
         android:id="@+id/up_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="219dp"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="40dp"
+        android:background="#FBF2EF"
+
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="500dp"
+        android:layout_height="700dp"
+        android:layout_marginTop="400dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/up_date_text"
+            android:layout_width="450dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:text="TextView"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp"/>
+
+        <EditText
+            android:id="@+id/up_name_edit"
+            android:layout_width="450dp"
+            android:layout_height="80dp"
+            android:hint="음식"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/up_calorie_edit"
+            android:layout_width="450dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/up_name_edit"
+            android:hint="칼로리"
+            android:textSize="30dp"
+        android:layout_marginLeft="10dp"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="110dp"/>
+
+        <Button
+            android:id="@+id/btn_updataclose"
+            android:layout_width="415dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/up_calorie_edit"
+            android:layout_centerHorizontal="true"
+            android:text="돌아가기"
+            android:textSize="15dp"
+            android:fontFamily="@font/lineregular"
+            android:textColor="@color/white"
+            android:backgroundTint="#FA5882"/>
+
+
+    </LinearLayout>
+
+
 </RelativeLayout>

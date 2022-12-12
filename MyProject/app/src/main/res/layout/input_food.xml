@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/food">
+    android:background="#F78181">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="196dp"
+        android:layout_height="196dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="9dp"
-        android:background="#FBF2EF"
+        android:layout_marginLeft="30dp"
+        android:background="@color/white"
         android:src="@drawable/photo"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
         app:layout_constraintEnd_toStartOf="@+id/listView"
@@ -29,6 +30,7 @@
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="13dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -164,8 +166,9 @@
 
     <TimePicker
         android:id="@+id/timePicker"
-        android:layout_width="410dp"
+        android:layout_width="400dp"
         android:layout_height="0dp"
+        android:layout_marginLeft="-10dp"
         android:layout_marginBottom="41dp"
         android:timePickerMode="spinner"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -239,8 +242,8 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="200dp"
+        android:layout_height="192dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="9dp"
