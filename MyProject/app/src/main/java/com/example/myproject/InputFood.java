@@ -43,9 +43,11 @@ import java.util.Set;
 public class InputFood extends AppCompatActivity {
     ImageView imageView;
     Button btn_close, btn_save, google_map, btn_date;
-    EditText foodname, foodcount, calorie, foodeval;
+    EditText foodname, foodcount, foodcalorie, foodeval;
     TimePicker timePicker;
     DatePickerDialog datePickerDialog;
+
+    int parsedCalorie;
 
     Uri uri;
     ListView listView;
@@ -65,7 +67,7 @@ public class InputFood extends AppCompatActivity {
         btn_save = findViewById(R.id.btn_save);
         foodname = findViewById(R.id.foodName);
         foodcount = findViewById(R.id.foodCount);
-        calorie = findViewById(R.id.calorie);
+        foodcalorie = findViewById(R.id.calorie_inputfood);
         foodeval = findViewById(R.id.foodEval);
         timePicker = findViewById(R.id.timePicker);
         google_map = findViewById(R.id.google_map);
@@ -78,7 +80,8 @@ public class InputFood extends AppCompatActivity {
             public void onClick(View v) {
                 String foodname1 = foodname.getText().toString();
                 String foodcount1 = foodcount.getText().toString();
-                String calorie1 = calorie.getText().toString();
+                String calorie1 = foodcalorie.getText().toString();
+                parsedCalorie = Integer.parseInt(calorie1);
                 String foodeval1 = foodeval.getText().toString();
                 String time1 = timePicker.getHour() + ":" + timePicker.getMinute();
                 String date1 = btn_date.getText().toString();
@@ -98,7 +101,7 @@ public class InputFood extends AppCompatActivity {
                     Toast.makeText(InputFood.this, "필수 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     //Hint 도 글자로 인식하는듯
                 } else {
-                    insertUser(foodname1, foodcount1, calorie1, foodeval1, time1, outputDate);
+                    insertUser(foodname1, foodcount1, parsedCalorie, foodeval1, time1, outputDate);
                 }
 
 
@@ -182,7 +185,7 @@ public class InputFood extends AppCompatActivity {
                 FoodDB foodDB = (FoodDB) adapterView.getItemAtPosition(position);
 
                 foodname.setText(foodDB.foodname);
-                calorie.setText(foodDB.calorie);
+                foodcalorie.setText(foodDB.calorie);
                 foodcount.setText("1");
             }
         });
@@ -234,7 +237,7 @@ public class InputFood extends AppCompatActivity {
 
             // Populate the data into the template view using the data object
             foodName.setText(food.foodname);
-            foodCalories.setText(food.calorie);
+            foodCalories.setText(Integer.toString(food.calorie));
 
             // Return the completed view to render on screen
             return convertView;
@@ -242,7 +245,7 @@ public class InputFood extends AppCompatActivity {
     }
 
 
-    public void insertUser(String foodname1, String foodcount1, String calorie1, String foodeval1, String time1, String date1) {
+    public void insertUser(String foodname1, String foodcount1, int calorie1, String foodeval1, String time1, String date1) {
         User user = new User();
         user.foodname = foodname1;
         user.foodcount = foodcount1;

@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
                 foodinput.foodNo = token[0];
                 foodinput.foodname = token[1];
-                foodinput.calorie = token[2];
+                foodinput.calorie = Integer.parseInt(token[2]);
                 //Log.d("file_test", Arrays.toString(tokens));
                 FoodDataBase.foodDBDao().insertFood(foodinput);
 

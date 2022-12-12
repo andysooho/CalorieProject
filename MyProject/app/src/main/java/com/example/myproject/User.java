@@ -23,7 +23,7 @@ public class User { // implements Serializable
     public String foodcount;
 
     @ColumnInfo(name = "calorie")
-    public String calorie;
+    public int calorie;
 
     @ColumnInfo(name = "date")
     public String date;

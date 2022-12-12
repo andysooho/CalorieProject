@@ -16,5 +16,5 @@ public class FoodDB {
     public String foodname;
 
     @ColumnInfo(name = "calorie")
-    public String calorie;
+    public int calorie;
 }

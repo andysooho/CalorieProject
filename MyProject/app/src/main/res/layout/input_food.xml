@@ -133,7 +133,7 @@
                 android:textColor="@color/black" />
 
             <EditText
-                android:id="@+id/calorie"
+                android:id="@+id/calorie_inputfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
