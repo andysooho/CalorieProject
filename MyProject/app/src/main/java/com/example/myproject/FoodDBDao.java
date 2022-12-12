@@ -20,8 +20,6 @@ public interface FoodDBDao {
     @Insert
     void insertFood(FoodDB foodDB);
 
-
-
     @Delete
     void deleteUser(FoodDB foodDB);
 
