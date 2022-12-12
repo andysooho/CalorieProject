@@ -185,7 +185,7 @@ public class InputFood extends AppCompatActivity {
                 FoodDB foodDB = (FoodDB) adapterView.getItemAtPosition(position);
 
                 foodname.setText(foodDB.foodname);
-                foodcalorie.setText(foodDB.calorie);
+                foodcalorie.setText(Integer.toString(foodDB.calorie));
                 foodcount.setText("1");
             }
         });
