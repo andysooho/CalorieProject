@@ -37,7 +37,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
         int mPosition = holder.getAdapterPosition();
 
         holder.foodname.setText(userList.get(position).foodname);
-        holder.calorie.setText(userList.get(position).calorie);
+        //make userList's calorie to String
+        String calorietostring = String.valueOf(userList.get(position).calorie);
+        holder.calorie.setText(calorietostring);
         holder.date.setText(userList.get(position).date);
         holder.foodwhen.setText(userList.get(position).foodwhen);
 
