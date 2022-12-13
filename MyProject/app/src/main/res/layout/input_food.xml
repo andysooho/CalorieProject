@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEEBD">
+    android:background="#F3EFD1">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="43dp"
         android:background="@color/white"
         android:src="@drawable/photo"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="13dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,11 +80,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="26dp"
+        android:layout_width="335dp"
+        android:layout_height="203dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="22dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btn_date"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,14 +113,9 @@
 
             <Button
                 android:id="@+id/btn_search"
-                android:layout_width="80dp"
+                android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:text="검색" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -171,9 +166,7 @@
         android:id="@+id/timePicker"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="11dp"
         android:timePickerMode="spinner"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,11 +175,9 @@
 
     <Button
         android:id="@+id/btn_date"
-        android:layout_width="0dp"
+        android:layout_width="277dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="67dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="11dp"
         android:backgroundTint="#F79F81"
         android:text="날짜"
         app:layout_constraintBottom_toTopOf="@+id/timePicker"
@@ -196,13 +187,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="400dp"
-        android:layout_height="82dp"
+        android:layout_width="407dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="2dp"
 
 
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="6dp"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -252,9 +241,8 @@
         android:id="@+id/listView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="59dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
