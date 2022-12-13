@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5DEB3">
 
 
     <CalendarView
@@ -38,14 +39,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="아침" />
+                android:text="아침"
+                android:textSize="25dp"
+                />
 
             <TextView
                 android:id="@+id/breakfast_calculated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="날짜를 선택하세요" />
+                android:text="날짜를 선택하세요"
+                android:textSize="18dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -58,14 +62,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="점심" />
+                android:text="점심"
+                android:textSize="25dp"/>
 
             <TextView
                 android:id="@+id/lunch_calculated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="25dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -78,14 +84,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="저녁" />
+                android:text="저녁"
+                android:textSize="25dp"/>
 
             <TextView
                 android:id="@+id/dinner_calculated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="25dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,14 +106,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="총 칼로리" />
+                android:text="총 칼로리"
+                android:textSize="25dp"/>
 
             <TextView
                 android:id="@+id/total_calculated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="" />
+                android:text=""
+                android:textSize="25dp"/>
         </LinearLayout>
     </LinearLayout>
 

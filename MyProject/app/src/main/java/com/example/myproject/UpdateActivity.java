@@ -1,7 +1,5 @@
 package com.example.myproject;
 
-import android.Manifest;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -18,7 +16,7 @@ import java.io.InputStream;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    EditText upNameEdit, upCalorieEdit;
+    EditText upNameEdit, upCalorieEdit, upCountEdit, upEvalEdit, upWhenEdit;
     TextView upDateText;
     ImageView imageView;
 
@@ -28,7 +26,9 @@ public class UpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-
+        upCountEdit = findViewById(R.id.edit_count);
+        upEvalEdit = findViewById(R.id.edit_eval);
+        upWhenEdit = findViewById(R.id.edit_when);
         upNameEdit = findViewById(R.id.up_name_edit);
         upCalorieEdit = findViewById(R.id.up_calorie_edit);
         upDateText = findViewById(R.id.up_date_text);
@@ -39,6 +39,9 @@ public class UpdateActivity extends AppCompatActivity {
         String upName = getIntent().getStringExtra("upName");
         String upCalorie = getIntent().getStringExtra("upCalorie");
         String upDate = getIntent().getStringExtra("upDate");
+        String upCount = getIntent().getStringExtra("upCount");
+        String upEval = getIntent().getStringExtra("upEval");
+        String upWhen = getIntent().getStringExtra("upWhen");
         uId = getIntent().getIntExtra("uId", 0);
 
         String upImageUri = getIntent().getStringExtra("upImageUri");
@@ -60,6 +63,9 @@ public class UpdateActivity extends AppCompatActivity {
         upNameEdit.setText(upName);
         upCalorieEdit.setText(upCalorie);
         upDateText.setText(upDate);
+        upCountEdit.setText(upCount);
+        upEvalEdit.setText(upEval);
+        upWhenEdit.setText(upWhen);
 
         //수정 버튼
         closeBtn.setOnClickListener(v -> {

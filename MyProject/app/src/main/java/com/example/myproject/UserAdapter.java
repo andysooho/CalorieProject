@@ -51,8 +51,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                 Intent intent = new Intent(context, UpdateActivity.class);
                 intent.putExtra("uId",userList.get(mPosition).uid);
                 intent.putExtra("upName",userList.get(mPosition).foodname);
-                intent.putExtra("upCalorie",userList.get(mPosition).calorie);
-                intent.putExtra("upDate",userList.get(mPosition).date);
+                intent.putExtra("upCalorie",Integer.toString(userList.get(mPosition).calorie));
+                intent.putExtra("upCount",userList.get(mPosition).foodcount);
+                intent.putExtra("upEval",userList.get(mPosition).foodeval);
+                intent.putExtra("upWhen",userList.get(mPosition).foodwhen);
+
+
                 //imageUri넘기기
                 if(userList.get(mPosition).imageUri != null){
                     intent.putExtra("upImageUri",userList.get(mPosition).imageUri);
