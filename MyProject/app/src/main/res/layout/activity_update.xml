@@ -21,8 +21,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="500dp"
-        android:layout_height="700dp"
+        android:layout_width="match_parent"
+        android:layout_height="491dp"
         android:layout_marginTop="400dp"
         android:orientation="vertical">
 
@@ -30,33 +30,33 @@
             android:id="@+id/up_date_text"
             android:layout_width="450dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="40dp"
             android:text="TextView"
-            android:textSize="30dp"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/up_name_edit"
             android:layout_width="450dp"
             android:layout_height="80dp"
-            android:hint="음식"
-            android:textSize="30dp"
             android:layout_marginLeft="10dp"
-            android:inputType="text" />
+            android:hint="음식"
+            android:inputType="text"
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/up_calorie_edit"
             android:layout_width="450dp"
             android:layout_height="80dp"
             android:layout_below="@id/up_name_edit"
+            android:layout_marginLeft="10dp"
             android:hint="칼로리"
-            android:textSize="30dp"
-        android:layout_marginLeft="10dp"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="30dp" />
 
         <TextView
             android:layout_width="10dp"
-            android:layout_height="110dp"/>
+            android:layout_height="110dp" />
 
         <Button
             android:id="@+id/btn_updataclose"
@@ -64,11 +64,11 @@
             android:layout_height="60dp"
             android:layout_below="@id/up_calorie_edit"
             android:layout_centerHorizontal="true"
-            android:text="돌아가기"
-            android:textSize="15dp"
+            android:backgroundTint="#FA5882"
             android:fontFamily="@font/lineregular"
+            android:text="돌아가기"
             android:textColor="@color/white"
-            android:backgroundTint="#FA5882"/>
+            android:textSize="15dp" />
 
 
     </LinearLayout>

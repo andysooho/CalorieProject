@@ -111,7 +111,7 @@ public class MealList extends AppCompatActivity {
                 date = sdf.format(tmpdate);
                 //Toast.makeText(MealList.this, date, Toast.LENGTH_SHORT).show();
                 loadUserListbyDate(date);
-
+                btnAll.setText("모든식사보기");
             }
         });
 
