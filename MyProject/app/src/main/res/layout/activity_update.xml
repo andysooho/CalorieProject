@@ -22,22 +22,22 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="491dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/up_date_text"
-            android:layout_width="450dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="40dp"
-            android:text="TextView"
+            android:text="날짜"
             android:textSize="20dp" />
 
         <EditText
             android:id="@+id/up_name_edit"
-            android:layout_width="450dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
             android:hint="음식"
@@ -46,7 +46,7 @@
 
         <EditText
             android:id="@+id/up_calorie_edit"
-            android:layout_width="450dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_below="@id/up_name_edit"
             android:layout_marginLeft="10dp"
@@ -57,7 +57,7 @@
         <EditText
 
             android:id="@+id/edit_count"
-            android:layout_width="450dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
             android:hint="수량"
@@ -67,7 +67,7 @@
         <EditText
 
             android:id="@+id/edit_eval"
-            android:layout_width="450dp"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
             android:hint="맛평가"
@@ -76,8 +76,8 @@
 
         <EditText
 
-            android:id="@+id/edit_when"
-            android:layout_width="450dp"
+            android:id="@+id/edit_location"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
             android:hint="위치"
@@ -85,16 +85,14 @@
             android:textSize="20dp" />
 
 
-        <TextView
-            android:layout_width="10dp"
-            android:layout_height="80dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_updataclose"
-            android:layout_width="415dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/up_calorie_edit"
-            android:layout_centerHorizontal="true"
             android:backgroundTint="#FA5882"
             android:fontFamily="@font/lineregular"
             android:text="돌아가기"

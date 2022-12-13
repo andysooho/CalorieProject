@@ -33,4 +33,7 @@ public class User { // implements Serializable
 
     @ColumnInfo(name = "foodwhen")
     public String foodwhen;
+
+    @ColumnInfo(name = "location")
+    public String location;
 }

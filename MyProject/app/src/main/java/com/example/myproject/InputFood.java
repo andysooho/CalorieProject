@@ -84,6 +84,7 @@ public class InputFood extends AppCompatActivity {
                 String foodeval1 = foodeval.getText().toString();
                 String time1 = timePicker.getHour() + ":" + timePicker.getMinute();
                 String date1 = btn_date.getText().toString();
+                String location1 = location.getText().toString();
 
                 //make date1 format 2022년 12월 8일 to yyyy-MM-dd using SimpleDateFormat
                 SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
@@ -100,7 +101,7 @@ public class InputFood extends AppCompatActivity {
                     Toast.makeText(InputFood.this, "필수 항목을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     //Hint 도 글자로 인식하는듯. 사용자가 적어도 음식이름은 입력하게 유도.
                 } else {
-                    insertUser(foodname1, foodcount1, parsedCalorie, foodeval1, time1, outputDate);
+                    insertUser(foodname1, foodcount1, parsedCalorie, foodeval1, time1, outputDate, location1);
                     //DB의 칼로리를 Int로 해야하는데 이것때문에 엄청나게 고생했다.
                 }
             }
@@ -231,7 +232,7 @@ public class InputFood extends AppCompatActivity {
     }
 
     //유저가 입력한 값들을 모아 DB에 저장
-    public void insertUser(String foodname1, String foodcount1, int calorie1, String foodeval1, String time1, String date1) {
+    public void insertUser(String foodname1, String foodcount1, int calorie1, String foodeval1, String time1, String date1, String location1) {
         User user = new User();
         user.foodname = foodname1;
         user.foodcount = foodcount1;
@@ -243,6 +244,8 @@ public class InputFood extends AppCompatActivity {
             user.imageUri = uri.toString();
         }
         user.foodwhen = foodwhen;
+        user.location = location1;
+
 
         AppDatabase db = AppDatabase.getDBInstance(this.getApplicationContext());
         db.userDao().insertUser(user);

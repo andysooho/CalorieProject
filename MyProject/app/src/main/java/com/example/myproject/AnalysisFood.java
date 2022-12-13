@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 public class AnalysisFood extends AppCompatActivity {
-    TextView breakfastCalorie, lunchCalorie, dinnerCalorie, totalCalorie, totalcalorie_date;
+    TextView breakfastCalorie, lunchCalorie, dinnerCalorie, totalCalorie, totalcalorie_date, textview23;
     CalendarView calendarView;
     String date;
 
@@ -30,6 +31,7 @@ public class AnalysisFood extends AppCompatActivity {
         dinnerCalorie = findViewById(R.id.dinner_calculated);
         totalCalorie = findViewById(R.id.total_calculated);
         totalcalorie_date = findViewById(R.id.totalcal);
+        textview23 = findViewById(R.id.textView23);
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
@@ -62,6 +64,9 @@ public class AnalysisFood extends AppCompatActivity {
                 int lunchcal = db.userDao().getTotalCaloriesForLunchOnDate(date);
                 int dinnercal = db.userDao().getTotalCaloriesForDinnerOnDate(date);
                 int totalcal = db.userDao().getTotalCaloriesForAllFoodOnDate(date);
+
+                totalcalorie_date.setText(date+"\n총 칼로리");
+                textview23.setVisibility(View.INVISIBLE);
 
                 //텍스트박스에 정수를 설정하면 오류가난다. 반드시 어떤 형인지를 조심해서 설정해야한다.
                 breakfastCalorie.setText(Integer.toString(breakfastcal) + " kcal");

@@ -55,6 +55,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                 intent.putExtra("upCount",userList.get(mPosition).foodcount);
                 intent.putExtra("upEval",userList.get(mPosition).foodeval);
                 intent.putExtra("upWhen",userList.get(mPosition).foodwhen);
+                intent.putExtra("upDate",userList.get(mPosition).date);
+                intent.putExtra("uplocation",userList.get(mPosition).location);
+                intent.putExtra("upTime",userList.get(mPosition).time);
 
 
                 //imageUri넘기기
