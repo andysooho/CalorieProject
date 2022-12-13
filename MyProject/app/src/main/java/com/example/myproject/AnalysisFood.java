@@ -42,7 +42,7 @@ public class AnalysisFood extends AppCompatActivity {
 
         AppDatabase db = AppDatabase.getDBInstance(getApplicationContext());
         int totalcal = db.userDao().getTotalCaloriesForAllFoodOnDate(date_fortotal);
-        totalCalorie.setText(totalcal+" kcal");
+        totalCalorie.setText(totalcal + " kcal");
 
 
         //캘린더뷰
@@ -64,10 +64,10 @@ public class AnalysisFood extends AppCompatActivity {
                 int totalcal = db.userDao().getTotalCaloriesForAllFoodOnDate(date);
 
                 //텍스트박스에 정수를 설정하면 오류가난다. 반드시 어떤 형인지를 조심해서 설정해야한다.
-                breakfastCalorie.setText(Integer.toString(breakfastcal));
-                lunchCalorie.setText(Integer.toString(lunchcal));
-                dinnerCalorie.setText(Integer.toString(dinnercal));
-                totalCalorie.setText(Integer.toString(totalcal));
+                breakfastCalorie.setText(Integer.toString(breakfastcal) + " kcal");
+                lunchCalorie.setText(Integer.toString(lunchcal) + " kcal");
+                dinnerCalorie.setText(Integer.toString(dinnercal)+ " kcal");
+                totalCalorie.setText(Integer.toString(totalcal)+ " kcal");
             }
         });
     }

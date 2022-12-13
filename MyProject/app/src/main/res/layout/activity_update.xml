@@ -6,20 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UpdateActivity"
-    android:background="#F781D8">
-
+    android:background="#F5DEB3">
 
 
     <ImageView
         android:id="@+id/up_image"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
-        android:background="#FBF2EF"
+        android:layout_marginTop="80dp"
 
-        />
-
+        android:background="#FBF2EF" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

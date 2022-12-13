@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F78181">
+    android:background="#F5DEB3">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="43dp"
-        android:background="@color/white"
+        android:layout_width="192dp"
+        android:layout_height="221dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="12dp"
         android:src="@drawable/photo"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+        app:layout_constraintBottom_toBottomOf="@+id/listView"
         app:layout_constraintEnd_toStartOf="@+id/listView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/listView" />
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -59,14 +58,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:text="아침" />
+                android:text="아침"
+                android:textColor="@color/black" />
 
             <RadioButton
                 android:id="@+id/lunch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:text="점심" />
+                android:text="점심"
+                android:textColor="@color/black" />
 
             <RadioButton
                 android:id="@+id/dinner"
@@ -74,16 +75,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onRadioButtonClicked"
-                android:text="저녁" />
+                android:text="저녁"
+                android:textColor="@color/black" />
         </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="335dp"
-        android:layout_height="203dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="39dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="38dp"
         android:layout_marginBottom="22dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btn_date"
@@ -99,21 +101,16 @@
 
             <EditText
                 android:id="@+id/foodName"
-                android:layout_width="227dp"
+                android:layout_width="235dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:hint="이름"
                 android:inputType="textPersonName"
                 android:textColor="@color/black" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
             <Button
                 android:id="@+id/btn_search"
-                android:layout_width="95dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="검색" />
         </LinearLayout>
@@ -164,8 +161,8 @@
 
     <TimePicker
         android:id="@+id/timePicker"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="407dp"
+        android:layout_height="173dp"
         android:layout_marginBottom="11dp"
         android:timePickerMode="spinner"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -175,8 +172,10 @@
 
     <Button
         android:id="@+id/btn_date"
-        android:layout_width="277dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="67dp"
         android:layout_marginBottom="11dp"
         android:backgroundTint="#F79F81"
         android:text="날짜"
@@ -187,11 +186,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="407dp"
-        android:layout_height="84dp"
+        android:layout_width="405dp"
+        android:layout_height="75dp"
+
+
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="2dp"
-
-
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -242,7 +243,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="59dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="29dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
