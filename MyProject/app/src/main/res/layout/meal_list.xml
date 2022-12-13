@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5DEB3">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_showall" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_showall"
+        />
 
     <CalendarView
         android:id="@+id/calendarView1"
@@ -31,11 +33,14 @@
 
     <Button
         android:id="@+id/btn_showall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/lineregular"
         android:text="모든식사보기"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView1" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView1"
+        android:backgroundTint="#F79F81"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
